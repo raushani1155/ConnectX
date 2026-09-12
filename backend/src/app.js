@@ -1,3 +1,5 @@
+import dotenv from "dotenv";
+dotenv.config();
 
 
 import  express from "express";
@@ -27,7 +29,7 @@ app.get("/home", (req, res) => {
     return res.json({"hello": "World"})
 });
 const start = async() => {
-    const connectionDb = await mongoose.connect("mongodb+srv://raushaniraj308_db_user:AWPL8990@cluster0.tsuboua.mongodb.net/?appName=Cluster0")
+    const connectionDb = await mongoose.connect(process.env.MONGO_URL);
     console.log(`MONGO Connected DB Host: ${connectionDb.connection.host}`)
     server.listen(app.get("port"), () => {
       console.log("LISTENIN ON PORT 8000")  
