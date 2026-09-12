@@ -31,8 +31,8 @@ app.get("/home", (req, res) => {
 const start = async() => {
     const connectionDb = await mongoose.connect(process.env.MONGO_URL);
     console.log(`MONGO Connected DB Host: ${connectionDb.connection.host}`)
-    server.listen(app.get("port"), () => {
-      console.log("LISTENIN ON PORT 8000")  
+    server.listen(app.get("port"), "0.0.0.0", () => {
+      console.log(`LISTENIN ON PORT  $ {app.get("port")}`); 
     });
 }
 start();
